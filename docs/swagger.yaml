@@ -1,0 +1,60 @@
+openapi: 3.0.2
+info:
+  title: Games-Api
+  version: 1.0.0
+  description: '### This is a Swagger UI for our Games API'
+paths:
+  /games:
+    get:
+      tags:
+        - games
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+              examples:
+                list of games:
+                  value:
+                    - nhl22
+                    - minecraft
+          description: ''
+      summary: Get a list of all games
+      description: Return a list of all games in API
+  '/games/{id}':
+    get:
+      tags:
+        - details
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+              examples:
+                Full details of...:
+                  value: |-
+                    [
+                        {"id":1,"name":"Witcher 3",price...
+                    ]
+          description: Returns full details of a given id game
+        '404': {}
+      operationId: id
+      summary: Get full details of a game
+      description: Returns full details of a given id game
+components:
+  schemas:
+    error:
+      title: Root Type for error
+      description: ''
+      type: object
+      properties:
+        error:
+          type: string
+      example:
+        error: Error message.
